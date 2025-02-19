@@ -6,6 +6,9 @@ metadata:
 spec:
   imageRepositoryRef:
     name: azure-keyvault-e2e
+  filterTags:
+    pattern: '^\d{14}$'
+    extract: "$0"
   policy:
-    alphabetical:
-      order: asc
+    numerical:
+      order: desc
