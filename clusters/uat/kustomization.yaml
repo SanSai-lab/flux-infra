@@ -1,22 +1,28 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: dev
+  name: uat
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./uat
+  path: ./clusters/uat # Points to the directory containing kustomization.yaml
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
   - name: flux-system
-  targetNamespace: poc-uat
+  targetNamespace: poc-deuatv
   patches:
-  - path: azure-keyvault-e2e/patch-helm-release.yaml
-  resources:
-  - azure-keyvault-e2e/image.yaml
-  - azure-keyvault-e2e/image-policy.yaml
-  - azure-keyvault-e2e/image-update.yaml
-  - ../../apps/base/azure-keyvault-e2e
+  - target:
+      kind: HelmRelease
+      name: azure-keyvault-e2e
+    patch: | # <-- Using inline patch instead of "path"
+      apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      metadata:
+        name: azure-keyvault-e2e
+      spec:
+        values:
+          replicaCount: 2  # Example patching Helm values
+  timeout: 2m
