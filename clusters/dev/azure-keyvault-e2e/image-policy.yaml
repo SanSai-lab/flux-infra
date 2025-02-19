@@ -7,5 +7,5 @@ spec:
   imageRepositoryRef:
     name: azure-keyvault-e2e
   policy:
-    numerical:
+    alphabetical:
       order: asc
