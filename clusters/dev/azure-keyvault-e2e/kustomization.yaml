@@ -1,9 +1,22 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-resources:
-- image.yaml
-- image-policy.yaml
-- image-update.yaml
-- ../../apps/base/azure-keyvault-e2e
-patches:
-- path: patch-helm-release.yaml
+metadata:
+  name: dev
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./dev
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+  - name: flux-system
+  targetNamespace: poc-dev
+  patches:
+  - path: azure-keyvault-e2e/patch-helm-release.yaml
+  resources:
+  - azure-keyvault-e2e/image.yaml
+  - azure-keyvault-e2e/image-policy.yaml
+  - azure-keyvault-e2e/image-update.yaml
+  - ../../apps/base/azure-keyvault-e2e
