@@ -18,7 +18,7 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: flux-infra
+    name: flux-system
   update:
     path: ./dev/azure-keyvault-e2e
     strategy: Setters
