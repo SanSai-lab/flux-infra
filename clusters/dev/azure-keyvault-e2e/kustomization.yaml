@@ -4,6 +4,5 @@ resources:
 - image.yaml
 - image-policy.yaml
 - image-update.yaml
-- helmrelease.yaml
 patchesStrategicMerge:
 - patch-helm-release.yaml
