@@ -1,0 +1,11 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: azure-keyvault-e2e
+  namespace: poc-uat
+spec:
+  imageRepositoryRef:
+    name: azure-keyvault-e2e
+  policy:
+    numerical:
+      order: asc

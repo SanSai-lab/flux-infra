@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: azure-keyvault-repo
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: oci://saipocregistry.azurecr.io/charts
+  type: "oci"
+  secretRef:
+    name: helm-pull-secret

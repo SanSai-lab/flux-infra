@@ -1,0 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: azure-keyvault-e2e
+  namespace: poc-uat
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+      messageTemplate: "Updated image: {{range .Updated.Images}}{{println .}}{{end}}"
+    push:
+      branch: main
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-infra
+  update:
+    path: ./uat/azure-keyvault-e2e
+    strategy: Setters

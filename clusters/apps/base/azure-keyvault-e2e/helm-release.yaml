@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: azure-keyvault-e2e
+  namespace: poc-dev
+spec:
+  releaseName: azure-keyvault-e2e
+  interval: 5m
+  chart:
+    spec:
+      chart: azure-keyvault-e2e
+      sourceRef:
+        kind: HelmRepository
+        name: azure-keyvault-repo
+      version: '1.0.0'
+  values:
+    image:
+      repository: saipocregistry.azurecr.io/azure-keyvault-e2e
+      tag: "latest"
