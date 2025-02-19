@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-system
+  namespace: poc-dev
+spec:
+  interval: 1m0s
+  url: https://github.com/SanSai-lab/flux-infra.git
+  ref:
+    branch: main
