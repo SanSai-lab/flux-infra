@@ -7,4 +7,4 @@ spec:
   values:
     image:
       repository: saipocregistry.azurecr.io/azure-keyvault-e2e
-      tag: latest # {"$imagepolicy": "azure-keyvault-e2e:tag"}
+      tag: "20250220223620"  # Manually updating image tag
