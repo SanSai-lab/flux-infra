@@ -8,3 +8,6 @@ spec:
   interval: 1m0s
   secretRef:
     name: image-pull-secret
+  exclusionList:
+  - ^.*\.sig$
+  - ^sha256.*$
