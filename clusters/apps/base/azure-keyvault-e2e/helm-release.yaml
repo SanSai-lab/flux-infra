@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: azure-keyvault-e2e
@@ -6,13 +6,16 @@ metadata:
 spec:
   releaseName: azure-keyvault-e2e
   interval: 5m
+  timeout: 3m
   chart:
     spec:
       chart: azure-keyvault-e2e
+      version: "1.0.0"
       sourceRef:
         kind: HelmRepository
         name: azure-keyvault-repo
-      version: '1.0.0'
+        namespace: flux-system
+      reconcileStrategy: ChartVersion
   values:
     image:
       repository: saipocregistry.azurecr.io/azure-keyvault-e2e
