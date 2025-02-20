@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  url: oci://saipocregistry.azurecr.io/charts
+  url: oci://saipocregistry.azurecr.io/charts/azure-keyvault-e2e
   type: oci
   secretRef:
     name: helm-pull-secret
