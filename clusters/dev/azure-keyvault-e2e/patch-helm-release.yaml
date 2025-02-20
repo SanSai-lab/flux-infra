@@ -6,4 +6,5 @@ metadata:
 spec:
   values:
     image:
-      tag: latest # {"$imagepolicy": "azure-keyvault-e2e:tag"}
+      repository: saipocregistry.azurecr.io/azure-keyvault-e2e
+      tag: # {"$imagepolicy": "azure-keyvault-e2e"}

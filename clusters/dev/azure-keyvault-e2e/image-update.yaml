@@ -21,4 +21,4 @@ spec:
     name: flux-system
   update:
     path: clusters/dev/azure-keyvault-e2e
-    strategy: Setters
+    strategy: Patch
