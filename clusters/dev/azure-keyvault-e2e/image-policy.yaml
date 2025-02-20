@@ -1,14 +1,14 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: azure-keyvault-e2e
   namespace: poc-dev
 spec:
+  filterTags:
+    pattern: "^[0-9]{14}$"
+    extract: '$0'
   imageRepositoryRef:
     name: azure-keyvault-e2e
-  filterTags:
-    pattern: '^\d{14}$'
-    extract: "$0"
   policy:
-    numerical:
+    alphabetical:
       order: desc
