@@ -5,6 +5,6 @@ resources:
 - image-policy.yaml
 - image-update.yaml
 - gitrepository.yaml
-- ../../../apps/base/azure-keyvault-e2e/helm-release.yaml
+- ../../base/azure-keyvault-e2e/helm-release.yaml
 patchesStrategicMerge:
 - patch-helm-release.yaml
